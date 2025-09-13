@@ -18,7 +18,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
-import pe.edu.upc.easyshop.ui.theme.AppTheme
+import pe.edu.upc.easyshop.core.ui.theme.AppTheme
 
 @Composable
 fun Main() {
