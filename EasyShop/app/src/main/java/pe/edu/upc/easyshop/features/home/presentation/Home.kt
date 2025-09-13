@@ -1,5 +1,6 @@
 package pe.edu.upc.easyshop.features.home.presentation
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -13,6 +14,11 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Person
@@ -20,6 +26,7 @@ import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.outlined.FilterList
 import androidx.compose.material.icons.outlined.Notifications
 import androidx.compose.material.icons.outlined.ShoppingCart
+import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -32,12 +39,18 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import pe.edu.upc.easyshop.R
+import pe.edu.upc.easyshop.core.ui.components.ProductCard
+import pe.edu.upc.easyshop.core.ui.components.RoundedIcon
 import pe.edu.upc.easyshop.core.ui.theme.AppTheme
+import pe.edu.upc.easyshop.shared.models.products
 
 @Composable
 fun Home() {
@@ -152,16 +165,11 @@ fun Home() {
                     Text("See all")
                 }
             }
-            Row(
-                modifier = Modifier
-                    .height(64.dp)
-                    .fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                Spacer(modifier = Modifier.width(2.dp))
-                categories.forEach { category ->
+            LazyRow {
+
+                items(categories) { category ->
                     FilterChip(
-                        modifier = Modifier.padding(2.dp),
+                        modifier = Modifier.padding(8.dp),
                         selected = category == selectedCategory.value,
                         onClick = {
                             selectedCategory.value = category
@@ -172,29 +180,80 @@ fun Home() {
                     )
                 }
             }
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(192.dp)
+                    .padding(horizontal = 8.dp)
+            ) {
+                Row(
+                    modifier = Modifier
+                        .clip(RoundedCornerShape(16.dp))
+                        .background(
+                            Brush.linearGradient(
+                                listOf(
+                                    MaterialTheme.colorScheme.primary,
+                                    MaterialTheme.colorScheme.inversePrimary
+                                )
+                            )
+                        )
+                ) {
+                    Column(
+                        modifier = Modifier
+                            .weight(1f)
+                            .fillMaxHeight()
+                            .padding(horizontal = 8.dp),
+                        verticalArrangement = Arrangement.Center
+                    ) {
+                        Text(
+                            "Get your special sale up to 40%",
+                            style = MaterialTheme.typography.headlineMedium,
+                            color = MaterialTheme.colorScheme.background,
+                            fontWeight = FontWeight.SemiBold
+                        )
+                        ElevatedButton(onClick = {}) {
+                            Text("Shop now")
+                        }
+                    }
+                    Image(
+                        painterResource(R.drawable.banner),
+                        contentDescription = null,
+                        modifier = Modifier.weight(1f),
+                        contentScale = ContentScale.FillWidth
+                    )
+                }
+            }
+
+            Row(
+                modifier = Modifier
+                    .height(64.dp)
+                    .fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Spacer(modifier = Modifier.width(4.dp))
+                Text(
+                    "Popular",
+                    style = MaterialTheme.typography.titleMedium,
+                    fontWeight = FontWeight.SemiBold,
+                    modifier = Modifier.weight(1f)
+                )
+                TextButton(onClick = {}) {
+                    Text("See all")
+                }
+            }
+
+            LazyVerticalGrid(
+                columns = GridCells.Fixed(2)
+            ) {
+                items(products) { product ->
+                    ProductCard(product)
+                }
+            }
+
         }
     }
 }
 
-
-@Composable
-fun RoundedIcon(icon: ImageVector) {
-    Box(
-        Modifier
-            .size(48.dp)
-            .clip(RoundedCornerShape(8.dp))
-            .background(MaterialTheme.colorScheme.inverseOnSurface),
-        contentAlignment = Alignment.Center
-    ) {
-        Icon(
-            icon,
-            contentDescription = null,
-            modifier = Modifier.size(24.dp),
-            tint = MaterialTheme.colorScheme.onSurfaceVariant
-        )
-
-    }
-}
 
 sealed class Category(val label: String) {
     object All : Category("All")
