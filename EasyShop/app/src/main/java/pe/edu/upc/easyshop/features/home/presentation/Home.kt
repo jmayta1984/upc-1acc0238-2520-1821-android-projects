@@ -43,6 +43,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -101,12 +102,12 @@ fun Home() {
                     verticalArrangement = Arrangement.Center
                 ) {
                     Text(
-                        "Hello Alex",
+                        "${stringResource(R.string.label_hello)} Alex",
                         style = MaterialTheme.typography.labelMedium,
                         color = Color.Gray
                     )
                     Text(
-                        "Good morning",
+                        stringResource(R.string.label_greeting),
                         style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.SemiBold
                     )
@@ -132,7 +133,7 @@ fun Home() {
                         search.value = it
                     },
                     placeholder = {
-                        Text("Search")
+                        Text(stringResource(R.string.placeholder_search))
                     },
                     leadingIcon = {
                         Icon(
@@ -155,13 +156,13 @@ fun Home() {
             ) {
                 Spacer(modifier = Modifier.width(4.dp))
                 Text(
-                    "Categories",
+                    stringResource(R.string.label_categories),
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.SemiBold,
                     modifier = Modifier.weight(1f)
                 )
                 TextButton(onClick = {}) {
-                    Text("See all")
+                    Text(stringResource(R.string.button_see_all))
                 }
             }
             LazyRow {
@@ -231,13 +232,13 @@ fun Home() {
             ) {
                 Spacer(modifier = Modifier.width(4.dp))
                 Text(
-                    "Popular",
+                    stringResource(R.string.label_popular),
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.SemiBold,
                     modifier = Modifier.weight(1f)
                 )
                 TextButton(onClick = {}) {
-                    Text("See all")
+                    Text(stringResource(R.string.button_see_all))
                 }
             }
 
