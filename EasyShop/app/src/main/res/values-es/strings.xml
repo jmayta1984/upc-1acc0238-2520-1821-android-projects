@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">EasyShop</string>
+    <string name="label_categories">Categorías</string>
+    <string name="label_popular">Popular</string>
+    <string name="button_shop">Comprar ahora</string>
+    <string name="button_see_all">Mostrar todos</string>
+    <string name="placeholder_search">Buscar</string>
+    <string name="label_greeting">Buenos días</string>
+    <string name="label_hello">Hola</string>
+</resources>
