@@ -1,4 +1,4 @@
-package pe.edu.upc.easyshop
+package pe.edu.upc.easyshop.core.root
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding

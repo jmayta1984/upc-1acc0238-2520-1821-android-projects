@@ -5,6 +5,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import pe.edu.upc.easyshop.core.root.Main
 import pe.edu.upc.easyshop.core.ui.theme.AppTheme
 import pe.edu.upc.easyshop.features.auth.presentation.Login
 
@@ -20,16 +21,13 @@ fun AppNav(){
         }
 
         composable(Route.Main.route) {
-            _root_ide_package_.pe.edu.upc.easyshop.Main()
+            Main()
         }
 
     }
 }
 
-sealed class Route(val route: String){
-    object Login: Route("login")
-    object Main: Route("main")
-}
+
 
 @Preview
 @Composable
