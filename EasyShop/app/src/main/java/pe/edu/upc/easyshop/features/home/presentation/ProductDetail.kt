@@ -15,6 +15,8 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.Remove
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
+import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.FabPosition
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -41,7 +43,10 @@ fun ProductDetail(product: Product) {
                     onClick = {},
                     modifier = Modifier.weight(1f)
 
-                ) { Text("Add to cart") }
+
+                ) {
+                    Text("Add to cart")
+                }
                 Spacer(modifier = Modifier.width(8.dp))
                 Button(
                     onClick = {},
