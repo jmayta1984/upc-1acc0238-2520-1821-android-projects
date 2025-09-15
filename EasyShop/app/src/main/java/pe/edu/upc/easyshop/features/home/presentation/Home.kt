@@ -82,7 +82,7 @@ fun Home() {
                     modifier = Modifier
                         .size(48.dp)
                         .clip(RoundedCornerShape(8.dp))
-                        .background(MaterialTheme.colorScheme.inversePrimary),
+                        .background(MaterialTheme.colorScheme.secondaryContainer),
                     contentAlignment = Alignment.Center
                 ) {
                     Icon(
@@ -150,7 +150,6 @@ fun Home() {
 
             Row(
                 modifier = Modifier
-                    .height(64.dp)
                     .fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
@@ -169,7 +168,7 @@ fun Home() {
 
                 items(categories) { category ->
                     FilterChip(
-                        modifier = Modifier.padding(8.dp),
+                        modifier = Modifier.padding(horizontal = 8.dp),
                         selected = category == selectedCategory.value,
                         onClick = {
                             selectedCategory.value = category
@@ -182,9 +181,10 @@ fun Home() {
             }
             Box(
                 modifier = Modifier
+                    .padding(vertical = 16.dp)
+                    .padding(horizontal = 8.dp)
                     .fillMaxWidth()
                     .height(192.dp)
-                    .padding(horizontal = 8.dp)
             ) {
                 Row(
                     modifier = Modifier
@@ -226,7 +226,6 @@ fun Home() {
 
             Row(
                 modifier = Modifier
-                    .height(64.dp)
                     .fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
@@ -263,7 +262,7 @@ sealed class Category(val label: String) {
     object Girls : Category("Girls")
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 fun HomePreview() {
     AppTheme(dynamicColor = false) {
