@@ -19,9 +19,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import pe.edu.upc.easyshop.core.ui.theme.AppTheme
+import pe.edu.upc.easyshop.features.home.presentation.Home
 
 @Composable
-fun Main() {
+fun Main(onClick: () -> Unit) {
 
     val navigationItems = listOf(
         NavigationItem(icon = Icons.Default.Home, label = "Home"),
@@ -45,7 +46,7 @@ fun Main() {
                             selectedIndex.intValue = index
                         },
                         icon = {
-                             Icon(
+                            Icon(
                                 item.icon,
                                 contentDescription = item.label
                             )
@@ -59,7 +60,7 @@ fun Main() {
         }
     ) {
         Column(modifier = Modifier.padding(it)) {
-
+            Home(onClick)
         }
     }
 }
@@ -70,6 +71,6 @@ data class NavigationItem(val icon: ImageVector, val label: String)
 @Composable
 fun MainPreview() {
     AppTheme(dynamicColor = false) {
-        Main()
+        Main {}
     }
 }
