@@ -24,7 +24,6 @@ import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
 import pe.edu.upc.easyshop.core.ui.theme.AppTheme
 import pe.edu.upc.easyshop.shared.models.Product
-import pe.edu.upc.easyshop.shared.models.products
 
 @Composable
 fun ProductCard(product: Product, onClick: () -> Unit) {
@@ -57,18 +56,4 @@ fun ProductCard(product: Product, onClick: () -> Unit) {
 
     }
 
-}
-
-@Preview(showBackground = true)
-@Composable
-fun ProductCardPreview() {
-    AppTheme {
-        LazyVerticalGrid(
-            columns = GridCells.Fixed(2)
-        ) {
-            items(products) { product ->
-                ProductCard(product) {}
-            }
-        }
-    }
 }

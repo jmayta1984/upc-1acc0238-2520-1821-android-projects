@@ -19,7 +19,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import pe.edu.upc.easyshop.core.ui.theme.AppTheme
-import pe.edu.upc.easyshop.features.home.presentation.Home
+import pe.edu.upc.easyshop.features.home.presentation.di.PresentationModule.getHomeViewModel
+import pe.edu.upc.easyshop.features.home.presentation.home.Home
 
 @Composable
 fun Main(onClick: () -> Unit) {
@@ -60,7 +61,7 @@ fun Main(onClick: () -> Unit) {
         }
     ) {
         Column(modifier = Modifier.padding(it)) {
-            Home(onClick)
+            Home(getHomeViewModel(),onClick)
         }
     }
 }

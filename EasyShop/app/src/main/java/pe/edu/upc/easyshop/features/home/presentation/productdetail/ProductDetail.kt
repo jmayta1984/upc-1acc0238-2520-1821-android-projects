@@ -1,4 +1,4 @@
-package pe.edu.upc.easyshop.features.home.presentation
+package pe.edu.upc.easyshop.features.home.presentation.productdetail
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -15,8 +15,6 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.Remove
 import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonColors
-import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.FabPosition
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -32,7 +30,6 @@ import coil3.compose.AsyncImage
 import pe.edu.upc.easyshop.core.ui.components.RoundedIcon
 import pe.edu.upc.easyshop.core.ui.theme.AppTheme
 import pe.edu.upc.easyshop.shared.models.Product
-import pe.edu.upc.easyshop.shared.models.products
 
 @Composable
 fun ProductDetail(product: Product) {
@@ -114,13 +111,5 @@ fun ProductDetail(product: Product) {
             Text(product.description, modifier = Modifier.padding(horizontal = 8.dp))
 
         }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun ProductDetailPreview() {
-    AppTheme {
-        ProductDetail(products[1])
     }
 }
