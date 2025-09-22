@@ -1,4 +1,4 @@
-package pe.edu.upc.easyshop.features.home.data.models
+package pe.edu.upc.easyshop.features.home.data.remote.models
 
 data class ProductDto(
     val availabilityStatus: String?,

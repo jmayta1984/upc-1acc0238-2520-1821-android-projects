@@ -2,7 +2,7 @@ package pe.edu.upc.easyshop.features.home.data.repositories
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import pe.edu.upc.easyshop.features.home.data.services.ProductService
+import pe.edu.upc.easyshop.features.home.data.remote.services.ProductService
 import pe.edu.upc.easyshop.features.home.domain.repositories.ProductRepository
 import pe.edu.upc.easyshop.shared.models.Product
 
