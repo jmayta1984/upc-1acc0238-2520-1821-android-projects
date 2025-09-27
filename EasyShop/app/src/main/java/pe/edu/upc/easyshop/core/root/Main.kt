@@ -23,7 +23,7 @@ import pe.edu.upc.easyshop.features.home.presentation.di.PresentationModule.getH
 import pe.edu.upc.easyshop.features.home.presentation.home.Home
 
 @Composable
-fun Main(onClick: () -> Unit) {
+fun Main(onClick: (Int) -> Unit) {
 
     val navigationItems = listOf(
         NavigationItem(icon = Icons.Default.Home, label = "Home"),

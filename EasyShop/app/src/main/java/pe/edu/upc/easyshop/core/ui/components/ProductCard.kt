@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Favorite
 import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
@@ -29,7 +30,13 @@ fun ProductCard(product: Product, onClick: () -> Unit) {
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.End
             ) {
-                Icon(Icons.Outlined.FavoriteBorder, contentDescription = null)
+                Icon(
+                    if (product.isFavorite) {
+                        Icons.Outlined.Favorite
+                    } else {
+                        Icons.Outlined.FavoriteBorder
+                    }, contentDescription = null
+                )
             }
             AsyncImage(
                 model = product.image,

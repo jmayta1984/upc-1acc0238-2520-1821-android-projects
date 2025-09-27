@@ -1,4 +1,4 @@
-package pe.edu.upc.easyshop.features.home.data.database
+package pe.edu.upc.easyshop.features.home.data.local.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
