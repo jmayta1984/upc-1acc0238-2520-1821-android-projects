@@ -13,6 +13,7 @@ import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -24,16 +25,17 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import pe.edu.upc.easyshop.core.ui.theme.AppTheme
-import pe.edu.upc.easyshop.features.auth.presentation.di.PresentationModule.getLoginViewModel
+import pe.edu.upc.easyshop.core.utils.UiState
 
 
 @Composable
 fun Login(
-    viewModel: LoginViewModel,
+    viewModel: LoginViewModel = hiltViewModel(),
     onLogin: () -> Unit
 ) {
-    val user = viewModel.user.collectAsState()
+    val userState = viewModel.user.collectAsState()
     val username = viewModel.username.collectAsState()
     val password = viewModel.password.collectAsState()
 
@@ -108,7 +110,7 @@ fun Login(
         Button(
             onClick = {
                 viewModel.login()
-                onLogin()
+              //  onLogin()
             },
             modifier = Modifier
                 .fillMaxWidth()
@@ -117,8 +119,11 @@ fun Login(
             Text("Sign in")
         }
 
-        user.value?.let {
-            Text("Success: ${it.name}")
+        when (userState.value) {
+            is UiState.Loading -> LinearProgressIndicator()
+            is UiState.Success -> Text("Success")
+            is UiState.Error -> Text("Error")
+            UiState.Initial -> {}
         }
 
 
@@ -129,7 +134,7 @@ fun Login(
 @Composable
 fun LoginPreview() {
     AppTheme(dynamicColor = false) {
-        Login(getLoginViewModel()) {}
+        Login {}
     }
 
 }

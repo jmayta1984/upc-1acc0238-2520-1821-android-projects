@@ -49,15 +49,15 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import pe.edu.upc.easyshop.R
 import pe.edu.upc.easyshop.core.ui.components.ProductCard
 import pe.edu.upc.easyshop.core.ui.components.RoundedIcon
 import pe.edu.upc.easyshop.core.ui.theme.AppTheme
-import pe.edu.upc.easyshop.features.home.presentation.di.PresentationModule.getHomeViewModel
 
 @Composable
 fun Home(
-    viewModel: HomeViewModel,
+    viewModel: HomeViewModel = hiltViewModel(),
     onClick: (Int) -> Unit) {
 
 
@@ -274,8 +274,8 @@ sealed class Category(val label: String) {
 
 @Preview(showBackground = true)
 @Composable
-fun HomePreview() {
-    AppTheme(dynamicColor = false) {
-        Home(getHomeViewModel()){}
+fun HomePreview(){
+    AppTheme {
+        Home {  }
     }
 }
