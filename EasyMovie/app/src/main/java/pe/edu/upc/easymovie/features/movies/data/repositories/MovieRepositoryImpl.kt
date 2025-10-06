@@ -25,7 +25,8 @@ class MovieRepositoryImpl
                             id = movieDto.id,
                             title = movieDto.title,
                             overview = movieDto.overview,
-                            posterPath = "https://image.tmdb.org/t/p/w500${movieDto.posterPath}"
+                            posterPath = "https://image.tmdb.org/t/p/w500${movieDto.posterPath}",
+                            isFavorite = dao.fetchById(movieDto.id).isNotEmpty()
                         )
                     }
 
@@ -41,20 +42,36 @@ class MovieRepositoryImpl
     }
 
     override suspend fun insertMovie(movie: Movie) = withContext(Dispatchers.IO) {
-        dao.insert(MovieEntity(
-            id = movie.id,
-            title = movie.title,
-            posterPath = movie.posterPath,
-            overview = movie.overview
-        ))
+        dao.insert(
+            MovieEntity(
+                id = movie.id,
+                title = movie.title,
+                posterPath = movie.posterPath,
+                overview = movie.overview
+            )
+        )
     }
 
     override suspend fun deleteMovie(movie: Movie) = withContext(Dispatchers.IO) {
-        dao.delete(MovieEntity(
-            id = movie.id,
-            title = movie.title,
-            posterPath = movie.posterPath,
-            overview = movie.overview
-        ))
+        dao.delete(
+            MovieEntity(
+                id = movie.id,
+                title = movie.title,
+                posterPath = movie.posterPath,
+                overview = movie.overview
+            )
+        )
+    }
+
+    override suspend fun getAllFavorites(): List<Movie> = withContext(Dispatchers.IO) {
+        return@withContext dao.fetchAll().map { movieEntity ->
+            Movie(
+                id = movieEntity.id,
+                title = movieEntity.title,
+                overview = movieEntity.overview,
+                posterPath = movieEntity.posterPath,
+                isFavorite = true
+            )
+        }
     }
 }
