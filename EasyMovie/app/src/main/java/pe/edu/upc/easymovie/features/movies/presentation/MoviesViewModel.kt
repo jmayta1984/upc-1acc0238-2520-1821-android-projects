@@ -36,6 +36,13 @@ class MoviesViewModel @Inject constructor(private val repository: MovieRepositor
             }
 
         }
+        _movies.value = _movies.value.map { item ->
+            if ((item.id) == movie.id) {
+                movie.copy(isFavorite = !movie.isFavorite)
+            } else {
+                item
+            }
+        }
 
 
     }
