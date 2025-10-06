@@ -25,4 +25,18 @@ class MoviesViewModel @Inject constructor(private val repository: MovieRepositor
     init {
         getAllMovies()
     }
+
+    fun toggleFavorite(movie: Movie) {
+
+        viewModelScope.launch {
+            if (movie.isFavorite) {
+                repository.deleteMovie(movie)
+            } else {
+                repository.insertMovie(movie)
+            }
+
+        }
+
+
+    }
 }

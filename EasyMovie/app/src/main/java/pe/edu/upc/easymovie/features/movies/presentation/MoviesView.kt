@@ -39,7 +39,7 @@ fun MoviesView(
             LazyColumn {
             items(movies) { movie ->
                 MovieCard(movie, onClick = {}) {
-
+                    viewModel.toggleFavorite(movie)
                 }
             }
         }
@@ -80,7 +80,7 @@ fun MovieCard(
                 )
             }
             IconButton(
-                onClick = {}
+                onClick = onToggleFavorite
             ) {
                 Icon(
                     Icons.Default.FavoriteBorder,
